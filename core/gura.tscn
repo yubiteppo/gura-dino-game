@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bspndhttxcynj"]
+[gd_scene load_steps=5 format=3 uid="uid://bspndhttxcynj"]
 
+[ext_resource type="Script" path="res://gura.cs" id="1_df4yo"]
 [ext_resource type="Texture2D" uid="uid://de65vbpun56sl" path="res://sprites/running/run0.png" id="1_vtw25"]
 [ext_resource type="Texture2D" uid="uid://btb2xwbhnq3lx" path="res://sprites/running/run1.png" id="2_5ti1c"]
 
@@ -18,6 +19,7 @@ animations = [{
 }]
 
 [node name="Gura" type="Node2D"]
+script = ExtResource("1_df4yo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
