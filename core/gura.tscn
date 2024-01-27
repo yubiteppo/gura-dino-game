@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bspndhttxcynj"]
+
+[ext_resource type="Script" path="res://gura.cs" id="1_df4yo"]
+[ext_resource type="Texture2D" uid="uid://de65vbpun56sl" path="res://sprites/running/run0.png" id="1_vtw25"]
+[ext_resource type="Texture2D" uid="uid://btb2xwbhnq3lx" path="res://sprites/running/run1.png" id="2_5ti1c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ibfh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5ti1c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_vtw25")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w37xq"]
+size = Vector2(63.5, 90)
+
+[node name="Gura" type="Node2D"]
+script = ExtResource("1_df4yo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_4ibfh")
+autoplay = "default"
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(10.25, 3)
+shape = SubResource("RectangleShape2D_w37xq")
