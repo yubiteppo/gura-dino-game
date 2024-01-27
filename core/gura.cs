@@ -8,17 +8,24 @@ public partial class gura : Node2D
 	private Vector2 _position;
 	private bool _isJumping;
 	
+	// Replaces Gura's position vector w/ new vector with
+	// modified y value
 	private void UpdateYPosition(float del)
 	{
 		_position.Y += del;
 		_gura.Position = _position;
 	}
 	
+	// Place Gura at initial location on screen
 	private void ResetPosition()
 	{
 		_gura.Position = new Vector2(0, _floorLevel);
 	}
 	
+	// Calculates and updates Gura's vertical position 
+	// during a jump. This method should be called every 
+	// frame in which Gura should be jumping, as it sets
+	// her position for a single frame.
 	private void Jump()
 	{
 		_velocity += _fallAcceleration;
@@ -26,7 +33,7 @@ public partial class gura : Node2D
 		{
 			_isJumping = false;
 			_velocity = _jumpImpulse;
-			ResetPosition();
+			ResetPosition();			// Not necessary, but ensures Gura will not fall through floor
 		}
 		else
 		{
@@ -48,11 +55,14 @@ public partial class gura : Node2D
 	
 	public override void _PhysicsProcess(double delta)
 	{
+		// Detect if jump has begun
 		if (Input.IsActionJustPressed("jump"))
 		{
 			_isJumping = true;
 		}
 		
+		// Determine position at this frame during jump based on
+		// jump impulse and downward acceleration.
 		if (_isJumping)
 		{
 			Jump();
