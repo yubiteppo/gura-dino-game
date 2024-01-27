@@ -1,17 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://bspndhttxcynj"]
 
 [ext_resource type="Script" path="res://gura.cs" id="1_df4yo"]
-[ext_resource type="Texture2D" uid="uid://de65vbpun56sl" path="res://sprites/running/run0.png" id="1_vtw25"]
-[ext_resource type="Texture2D" uid="uid://btb2xwbhnq3lx" path="res://sprites/running/run1.png" id="2_5ti1c"]
+[ext_resource type="Texture2D" uid="uid://btb2xwbhnq3lx" path="res://sprites/gura/running/run1.png" id="2_3bv0s"]
+[ext_resource type="Texture2D" uid="uid://de65vbpun56sl" path="res://sprites/gura/running/run0.png" id="3_osvn6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4ibfh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_5ti1c")
+"texture": ExtResource("2_3bv0s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_vtw25")
+"texture": ExtResource("3_osvn6")
 }],
 "loop": true,
 "name": &"default",
