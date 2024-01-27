@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cp7flgynyx2vw"]
+[gd_scene load_steps=4 format=3 uid="uid://cp7flgynyx2vw"]
 
 [ext_resource type="PackedScene" uid="uid://bspndhttxcynj" path="res://gura.tscn" id="1_400u4"]
+[ext_resource type="Script" path="res://main.cs" id="1_csk7f"]
 [ext_resource type="PackedScene" uid="uid://dkqfvfa3u7fbe" path="res://cactus.tscn" id="2_chpl0"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_csk7f")
 
 [node name="Gura" parent="." instance=ExtResource("1_400u4")]
 position = Vector2(180, 520)

@@ -33,7 +33,6 @@ public partial class cactus : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		GD.Print(_cactus.Position.X, " ", _cactus.Position.Y);
 		Move();
 	}
 }
