@@ -4,43 +4,58 @@ using System;
 public partial class gura : Node2D
 {
 	private AnimatedSprite2D _gura;
-	private int _restYPosition, _jumpHeight;
+	private float _floorLevel, _velocity, _fallAcceleration, _jumpImpulse;
+	private Vector2 _position;
+	private bool _isJumping;
 	
-	private void VerticalMoveUp()
+	private void UpdateYPosition(float del)
 	{
-		for (int i = 0; i < 1000; ++i)
+		_position.Y += del;
+		_gura.Position = _position;
+	}
+	
+	private void ResetPosition()
+	{
+		_gura.Position = new Vector2(0, _floorLevel);
+	}
+	
+	private void Jump()
+	{
+		_velocity += _fallAcceleration;
+		if (_gura.Position.Y + _velocity  > _floorLevel)
 		{
-			_gura.MoveLocalY(-0.01f);
+			_isJumping = false;
+			_velocity = _jumpImpulse;
+			ResetPosition();
+		}
+		else
+		{
+			UpdateYPosition(_velocity);
 		}
 	}
 	
-	private void VerticalMoveDown()
-	{
-		for (int i = 0; i < 1000; ++i)
-		{
-			_gura.MoveLocalY(0.01f);
-		}
-	}
-	
-	// Called when the node enters the scene tree for the first time.
+	 //Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		_gura = GetNode<AnimatedSprite2D>($"AnimatedSprite2D");
-		
-		_jumpHeight = 100;
-		_restYPosition = (int)_gura.Position[1] - _jumpHeight;
+		_position = new Vector2(0, _gura.Position.Y);
+		_floorLevel = _gura.Position.Y;
+		_fallAcceleration = 1;
+		_jumpImpulse = -22;
+		_velocity = _jumpImpulse;
+		_isJumping = false;
 	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	
+	public override void _PhysicsProcess(double delta)
 	{
-		if (Input.IsKeyPressed(Key.Up))
+		if (Input.IsActionJustPressed("jump"))
 		{
-			VerticalMoveUp();
+			_isJumping = true;
 		}
-		if (Input.IsKeyPressed(Key.Down))
+		
+		if (_isJumping)
 		{
-			VerticalMoveDown();
+			Jump();
 		}
 	}
 }
