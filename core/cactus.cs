@@ -51,9 +51,10 @@ public partial class cactus : Node2D
 	
 	public void IncreaseSpeed()
 	{
-		if (_moveAmount - 2.0f >= _speedCap)
+		float speedDecrement = 1.0f;
+		if (_moveAmount - speedDecrement >= _speedCap)
 		{
-			_moveAmount -= 2.0f;
+			_moveAmount -= speedDecrement;
 		}
 	}
 	
