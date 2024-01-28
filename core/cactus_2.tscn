@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpww48mr8qq0f"]
+
+[ext_resource type="Script" path="res://cactus_2.cs" id="1_3byd1"]
+[ext_resource type="Texture2D" uid="uid://c5ivh4ehlpvfx" path="res://sprites/cacti/Cactus2.png" id="1_ugals"]
+[ext_resource type="Texture2D" uid="uid://kd1o4lyu1kfj" path="res://sprites/cacti/Cactus3.png" id="2_ldknj"]
+
+[node name="Cactus2" type="Node2D"]
+script = ExtResource("1_3byd1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(19, -1)
+scale = Vector2(3, 3)
+texture = ExtResource("1_ugals")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Sprite2D"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/CharacterBody2D"]
+polygon = PackedVector2Array(-4, -7, -8, -4.66667, -7.66667, 1.66667, -4.33333, 4.66667, 0.333333, 10, 4.66667, 10, 6, 7.66667, 5.66667, -2.66667, 6, -6.33333, 2.33333, -8, 0, -7.66667)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-25, 6)
+scale = Vector2(2, 2)
+texture = ExtResource("2_ldknj")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Sprite2D2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D2/CharacterBody2D"]
+polygon = PackedVector2Array(-9.5, -5, -4.5, -8.5, -0.5, -9.5, 2.5, -9.5, 4, -6, 7.5, -1.5, 9.5, 1, 9, 4.5, 8, 7.5, 6, 9.5, 4.5, 10.5, 3, 11.5, -2, 11.5, -10, 3.5, -10, -3.5)
