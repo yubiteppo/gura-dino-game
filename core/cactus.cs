@@ -8,7 +8,7 @@ public partial class cactus : Node2D
 	private cactus_2 _cactus2;
 	
 	private int _minVal, _maxVal;
-	private float _moveAmount;
+	private float _moveAmount, _speedCap;
 	private Vector2 _position, _originalPosition;
 	
 	private Random _random;
@@ -49,6 +49,14 @@ public partial class cactus : Node2D
 		}
 	}
 	
+	public void IncreaseSpeed()
+	{
+		if (_moveAmount - 2.0f >= _speedCap)
+		{
+			_moveAmount -= 2.0f;
+		}
+	}
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -60,6 +68,7 @@ public partial class cactus : Node2D
 		_minVal = 1;
 		_maxVal = 4;
 		_moveAmount = -12.5f;
+		_speedCap = -30.0f;
 		
 		_position = new Vector2(this.Position.X, this.Position.Y);
 		_originalPosition = new Vector2(this.Position.X, this.Position.Y);
