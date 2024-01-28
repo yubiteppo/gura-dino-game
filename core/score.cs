@@ -5,7 +5,6 @@ public partial class Score : Label
 {
 	private int _scoreValue, _incrementValue;
 	private bool _isScorePaused;
-	private int toggle;
 	
 	private void SetScoreAndScoreValue(int val)
 	{
@@ -17,6 +16,11 @@ public partial class Score : Label
 	{
 		_scoreValue += delta;
 		this.Text = _scoreValue.ToString();
+	}
+	
+	public int GetScore()
+	{
+		return _scoreValue;
 	}
 	
 	public void IncrementScore()
@@ -46,7 +50,6 @@ public partial class Score : Label
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		toggle = 0;
 		_incrementValue = 1;
 		_scoreValue = 0;
 		this.Text = _scoreValue.ToString();
@@ -56,14 +59,9 @@ public partial class Score : Label
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (toggle == 1)
+		if (Engine.GetProcessFrames() % 5 == 0)
 		{
 			IncrementScore();
-			toggle = 0;
-		}
-		else
-		{
-			toggle = 1;
 		}
 	}
 }

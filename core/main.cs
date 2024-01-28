@@ -3,9 +3,14 @@ using System;
 
 public partial class main : Node2D
 {	
+	private Score _score;
+	private int _prevScore;
+	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		_score = GetNode<Score>($"ColorRect/Score");
+		_prevScore = _score.GetScore();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,6 +20,7 @@ public partial class main : Node2D
 		{	
 			DisplayServer.WindowSetMode((DisplayServer.WindowMode)2);
 		}
+		GD.Print(Engine.GetProcessFrames());
 		
 		if (Input.IsActionJustPressed("toggle_fullscreen"))
 		{
