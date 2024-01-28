@@ -1,9 +1,8 @@
 using Godot;
 using System;
 
-public partial class score : Control
+public partial class Score : Label
 {
-	private Label _score;
 	private int _scoreValue, _incrementValue;
 	private bool _isScorePaused;
 	private int toggle;
@@ -11,13 +10,13 @@ public partial class score : Control
 	private void SetScoreAndScoreValue(int val)
 	{
 		_scoreValue = val;
-		_score.Text = _scoreValue.ToString();
+		this.Text = _scoreValue.ToString();
 	}
 	
 	private void ChangeScoreAndScoreValue(int delta)
 	{
 		_scoreValue += delta;
-		_score.Text = _scoreValue.ToString();
+		this.Text = _scoreValue.ToString();
 	}
 	
 	public void IncrementScore()
@@ -48,10 +47,9 @@ public partial class score : Control
 	public override void _Ready()
 	{
 		toggle = 0;
-		_score = GetNode<Label>($"Label");
 		_incrementValue = 1;
 		_scoreValue = 0;
-		_score.Text = _scoreValue.ToString();
+		this.Text = _scoreValue.ToString();
 		_isScorePaused = false;
 	}
 

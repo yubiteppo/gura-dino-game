@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bspndhttxcynj" path="res://gura.tscn" id="1_400u4"]
 [ext_resource type="Script" path="res://main.cs" id="1_csk7f"]
 [ext_resource type="Texture2D" uid="uid://bt7w55hbllwbl" path="res://sprites/background/ground.png" id="2_lfqno"]
-[ext_resource type="PackedScene" uid="uid://d0vdwe8cnnjul" path="res://score.tscn" id="3_fmai1"]
+[ext_resource type="PackedScene" uid="uid://fkmypieykif3" path="res://score.tscn" id="3_fmai1"]
 [ext_resource type="PackedScene" uid="uid://dyi2tfd1317ye" path="res://cactus.tscn" id="4_su3rd"]
 
 [node name="Main" type="Node2D"]
@@ -24,24 +24,26 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.87451, 0.87451, 0.87451, 1)
 
+[node name="Score" parent="ColorRect" instance=ExtResource("3_fmai1")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 28.0
+grow_horizontal = 2
+scale = Vector2(1, 1)
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -10.0
 offset_top = -36.0
 offset_right = 1214.0
 offset_bottom = 766.0
 texture = ExtResource("2_lfqno")
-
-[node name="Score" parent="." instance=ExtResource("3_fmai1")]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.0
-offset_left = 566.0
-offset_top = -6.0
-offset_right = 633.0
-offset_bottom = 26.0
-grow_vertical = 1
-scale = Vector2(2, 2)
 
 [node name="Gura" parent="." instance=ExtResource("1_400u4")]
 position = Vector2(180, 520)
