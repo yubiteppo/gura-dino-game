@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkqfvfa3u7fbe"]
+
+[ext_resource type="Texture2D" uid="uid://cy2rjtntg3rdg" path="res://sprites/cacti/Cactus1.png" id="1_6ybe1"]
+[ext_resource type="Script" path="res://cactus_0.cs" id="1_btvux"]
+
+[node name="Cactus0" type="Node2D"]
+script = ExtResource("1_btvux")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(5, 5)
+texture = ExtResource("1_6ybe1")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Sprite2D"]
+position = Vector2(-4.1633e-13, -4.1633e-13)
+scale = Vector2(0.2, 0.2)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/CharacterBody2D"]
+polygon = PackedVector2Array(-15, -18, -8, -46, 6, -47, 16, -36, 51, -33, 51, -3, 41, 18, 17, 49, -10, 50, -31, 43, -37, 26, -14, -20)

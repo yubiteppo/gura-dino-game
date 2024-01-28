@@ -1,12 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkqfvfa3u7fbe"]
+[gd_scene load_steps=5 format=3 uid="uid://dyi2tfd1317ye"]
 
-[ext_resource type="Texture2D" uid="uid://cy2rjtntg3rdg" path="res://sprites/cacti/Cactus1.png" id="1_6ybe1"]
 [ext_resource type="Script" path="res://cactus.cs" id="1_btvux"]
+[ext_resource type="PackedScene" uid="uid://dk8p5c312m7mh" path="res://cactus_1.tscn" id="2_oguj5"]
+[ext_resource type="PackedScene" uid="uid://dkqfvfa3u7fbe" path="res://cactus_0.tscn" id="3_n7kq1"]
+[ext_resource type="PackedScene" uid="uid://bpww48mr8qq0f" path="res://cactus_2.tscn" id="4_jdu06"]
 
 [node name="Cactus" type="Node2D"]
 script = ExtResource("1_btvux")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2.08165e-12, 2.08165e-12)
-scale = Vector2(5, 5)
-texture = ExtResource("1_6ybe1")
+[node name="Cactus1" parent="." instance=ExtResource("2_oguj5")]
+visible = false
+position = Vector2(0, 20)
+
+[node name="Cactus0" parent="." instance=ExtResource("3_n7kq1")]
+
+[node name="Cactus2" parent="." instance=ExtResource("4_jdu06")]
+visible = false
+position = Vector2(0, -8)
+scale = Vector2(2, 2)

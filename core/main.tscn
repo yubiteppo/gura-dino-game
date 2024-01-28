@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bspndhttxcynj" path="res://gura.tscn" id="1_400u4"]
 [ext_resource type="Script" path="res://main.cs" id="1_csk7f"]
-[ext_resource type="PackedScene" uid="uid://dkqfvfa3u7fbe" path="res://cactus.tscn" id="2_chpl0"]
+[ext_resource type="PackedScene" uid="uid://dyi2tfd1317ye" path="res://cactus.tscn" id="4_su3rd"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_csk7f")
@@ -10,5 +10,5 @@ script = ExtResource("1_csk7f")
 [node name="Gura" parent="." instance=ExtResource("1_400u4")]
 position = Vector2(180, 520)
 
-[node name="Cactus" parent="." instance=ExtResource("2_chpl0")]
-position = Vector2(1500, 519)
+[node name="Cactus" parent="." instance=ExtResource("4_su3rd")]
+position = Vector2(1250, 520)
