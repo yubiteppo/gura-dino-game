@@ -15,10 +15,10 @@ public partial class cactus : Node2D
 	
 	private void Move()
 	{
-		float endPosition = -2000;
+		float endPosition = -50;
 		if (this.Position.X <= endPosition)
 		{
-			int newStartingX = _random.Next(1200, 2501);
+			int newStartingX = _random.Next(1200, 2200);
 			Vector2 newPosition = new Vector2(newStartingX, _originalPosition.Y);
 			_position = newPosition;
 			this.Position = _position;
