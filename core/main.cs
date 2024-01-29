@@ -7,6 +7,7 @@ public partial class main : Node2D
 	private int _prevScore;
 	private cactus _cactus;
 	private gura _gura;
+	private bool _isGameOver;
 	
 	private void SenseCollision()
 	{
@@ -14,6 +15,7 @@ public partial class main : Node2D
 		{
 			_cactus.GameOver();
 			_score.SetScorePaused();
+			_isGameOver = true;
 		}
 	}
 	
@@ -24,12 +26,21 @@ public partial class main : Node2D
 		_prevScore = _score.GetScore();
 		_cactus = GetNode<cactus>($"Cactus");
 		_gura = GetNode<gura>($"Gura");
+		_isGameOver = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
 		SenseCollision();
+		
+		if (_isGameOver && Input.IsActionJustPressed("jump"))
+		{
+			_gura.Reset();
+			_cactus.Reset();
+			_score.Reset();
+			_isGameOver = false;
+		}
 		
 		int currentScore = _score.GetScore();
 		if (currentScore - _prevScore >= 100)

@@ -46,6 +46,12 @@ public partial class Score : Label
 		_isScorePaused = false;
 	}
 	
+	public void Reset()
+	{
+		ResetScore();
+		SetScoreUnpaused();
+	}
+	
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

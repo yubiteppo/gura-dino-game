@@ -61,17 +61,6 @@ public partial class cactus : Node2D
 				}
 			}
 		}
-		
-		// If the cactus list has somehow become empty, add a duplicate of a randomly
-		// chosen parent cactus
-		else
-		{
-			int whichCactus = _random.Next(0, 3);
-			string whichCactusString = "./Cactus" + whichCactus.ToString();
-			general_cactus dup = GetNode<general_cactus>(whichCactusString).DuplicateCactus();
-			AddChild(dup);
-			_cactusList.Add(GetNode<general_cactus>(whichCactusString));
-		}
 	}
 	
 	// Increases the move amount by a fixed value
@@ -97,10 +86,12 @@ public partial class cactus : Node2D
 	public void Reset()
 	{
 		ClearCactusList();
-		general_cactus dup = _cactus0.DuplicateCactus();
+		//general_cactus dup = _cactus0.DuplicateCactus();
+		general_cactus dup = GetNode<general_cactus>($"Cactus0").DuplicateCactus();
 		AddChild(dup);
 		_cactusList.Add(dup);
 		_currentMoveAmount = _moveAmount;
+		_isGameOver = false;
 	}
 	
 	public void GameOver()

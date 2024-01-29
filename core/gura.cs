@@ -23,7 +23,7 @@ public partial class gura : Node2D
 		_gura.Position = new Vector2(0, _floorLevel);
 	}
 	
-	private void Reset()
+	public void Reset()
 	{
 		ResetPosition();
 		_hasCollided = false;
