@@ -29,7 +29,6 @@ public partial class main : Node2D
 		{	
 			DisplayServer.WindowSetMode((DisplayServer.WindowMode)2);
 		}
-		GD.Print(Engine.GetProcessFrames());
 		
 		if (Input.IsActionJustPressed("toggle_fullscreen"))
 		{
