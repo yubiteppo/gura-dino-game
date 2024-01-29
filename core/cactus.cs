@@ -19,19 +19,26 @@ public partial class cactus : Node2D
 	
 	private void Move()
 	{
+		// Only proceed if cactus list is populated, otherwise index out of bounds
 		if (_cactusList.Count > 0)
 		{
 			for (int i = _cactusList.Count - 1; i >= 0; --i)
 			{
+				// Get the cactus at index i and relating data
 				general_cactus currentCactus = _cactusList[i];
 				float currentCactusPosition = currentCactus.GetXPosition();
+				
+				// Remove current cactus from list and delete from tree
+				// when reaches endpoint
 				if (currentCactusPosition <= _endPoint)
 				{
 					_cactusList.RemoveAt(i);
 					currentCactus.QueueFree();
-					//currentCactus.Reset();
-					//currentCactus.SetXPosition(_originalPosition.X + _random.Next(0, 500));
 				}
+				
+				// If the cactus is at the respawn point and has not already spawned a child,
+				// spawn the child. The child must be a duplicate of the parent node, or we will
+				// delete the parent node and get object not found errors
 				else if (currentCactusPosition <= _spawnPoint && !currentCactus.HasSpawnedCactus())
 				{
 					int whichCactus = _random.Next(0, 3);
@@ -41,13 +48,20 @@ public partial class cactus : Node2D
 					dup.SetXPosition(_random.Next(0, 1200));
 					_cactusList.Add(dup);
 					currentCactus.SetHasSpawnedCactusTrue();
+					currentCactus.UpdateXPosition(_moveAmount);
 				}
+				
+				// If the cactus has not reached either the spawn or end point, do nothing
+				// but move the cactus
 				else
 				{
 					currentCactus.UpdateXPosition(_moveAmount);
 				}
 			}
 		}
+		
+		// If the cactus list has somehow become empty, add a duplicate of a randomly
+		// chosen parent cactus
 		else
 		{
 			int whichCactus = _random.Next(0, 3);
@@ -58,6 +72,7 @@ public partial class cactus : Node2D
 		}
 	}
 	
+	// Increases the move amount by a fixed value
 	public void IncreaseSpeed()
 	{
 		float speedDecrement = 1.0f;
@@ -70,26 +85,31 @@ public partial class cactus : Node2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		// Create random for rng
 		_random = new();
+		
+		// Get cactus nodes from scene tree
 		_cactus0 = GetNode<cactus_0>($"Cactus0");
 		_cactus1 = GetNode<cactus_1>($"Cactus1");
 		_cactus2 = GetNode<cactus_2>($"Cactus2");
 		
+		// Duplicate cactus 0 and add it as a part of the scene tree
 		general_cactus dup0 = _cactus0.DuplicateCactus();
 		AddChild(dup0);
 		
+		// Create cactus list and add duplicate cactus 0
 		_cactusList = new();
 		_cactusList.Add(dup0);
-		//_cactusList.Add(GetNode<general_cactus>($"Cactus0"));
 		
-		_minVal = 1;
-		_maxVal = 4;
+		// Set physics values
 		_moveAmount = -12.5f;
 		_speedCap = -35.0f;
 		
+		// Get position info
 		_position = new Vector2(this.Position.X, this.Position.Y);
 		_originalPosition = new Vector2(this.Position.X, this.Position.Y);
 		
+		// Set spawn and end points
 		_endPoint = -(_originalPosition.X + 50);
 		_spawnPoint = -900;
 	}
@@ -97,6 +117,6 @@ public partial class cactus : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		Move();
+		Move();		// Move every cactus in cactus list every frame
 	}
 }
