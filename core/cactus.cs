@@ -11,16 +11,18 @@ public partial class cactus : Node2D
 	
 	private List<general_cactus> _cactusList;
 	
-	private int _minVal, _maxVal;
-	private float _moveAmount, _speedCap, _endPoint, _spawnPoint;
+	//private int _minVal, _maxVal;
+	private float _moveAmount, _currentMoveAmount, _speedCap, _endPoint, _spawnPoint;
 	private Vector2 _position, _originalPosition;
 	
 	private Random _random;
 	
+	private bool _isGameOver;
+	
 	private void Move()
 	{
 		// Only proceed if cactus list is populated, otherwise index out of bounds
-		if (_cactusList.Count > 0)
+		if (_cactusList.Count > 0 && !_isGameOver)
 		{
 			for (int i = _cactusList.Count - 1; i >= 0; --i)
 			{
@@ -48,14 +50,14 @@ public partial class cactus : Node2D
 					dup.SetXPosition(_random.Next(0, 1200));
 					_cactusList.Add(dup);
 					currentCactus.SetHasSpawnedCactusTrue();
-					currentCactus.UpdateXPosition(_moveAmount);
+					currentCactus.UpdateXPosition(_currentMoveAmount);
 				}
 				
 				// If the cactus has not reached either the spawn or end point, do nothing
 				// but move the cactus
 				else
 				{
-					currentCactus.UpdateXPosition(_moveAmount);
+					currentCactus.UpdateXPosition(_currentMoveAmount);
 				}
 			}
 		}
@@ -76,10 +78,34 @@ public partial class cactus : Node2D
 	public void IncreaseSpeed()
 	{
 		float speedDecrement = 1.0f;
-		if (_moveAmount - speedDecrement >= _speedCap)
+		if (_currentMoveAmount - speedDecrement >= _speedCap)
 		{
-			_moveAmount -= speedDecrement;
+			_currentMoveAmount -= speedDecrement;
 		}
+	}
+	
+	private void ClearCactusList()
+	{
+		for (int i = _cactusList.Count - 1; i >= 0; --i)
+		{
+			general_cactus thisCactus = _cactusList[i];
+			thisCactus.QueueFree();
+		}
+		_cactusList.Clear();
+	}
+	
+	public void Reset()
+	{
+		ClearCactusList();
+		general_cactus dup = _cactus0.DuplicateCactus();
+		AddChild(dup);
+		_cactusList.Add(dup);
+		_currentMoveAmount = _moveAmount;
+	}
+	
+	public void GameOver()
+	{
+		_isGameOver = true;
 	}
 	
 	// Called when the node enters the scene tree for the first time.
@@ -103,6 +129,7 @@ public partial class cactus : Node2D
 		
 		// Set physics values
 		_moveAmount = -12.5f;
+		_currentMoveAmount = _moveAmount;
 		_speedCap = -35.0f;
 		
 		// Get position info
@@ -112,6 +139,8 @@ public partial class cactus : Node2D
 		// Set spawn and end points
 		_endPoint = -(_originalPosition.X + 50);
 		_spawnPoint = -900;
+		
+		_isGameOver = false;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
