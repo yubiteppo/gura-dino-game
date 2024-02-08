@@ -9,12 +9,10 @@
 script = ExtResource("1_btvux")
 
 [node name="Cactus1" parent="." instance=ExtResource("2_oguj5")]
-visible = false
 position = Vector2(0, 20)
 
 [node name="Cactus0" parent="." instance=ExtResource("3_n7kq1")]
 
 [node name="Cactus2" parent="." instance=ExtResource("4_jdu06")]
-visible = false
 position = Vector2(0, -8)
 scale = Vector2(2, 2)

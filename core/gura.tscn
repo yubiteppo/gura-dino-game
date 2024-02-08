@@ -26,8 +26,8 @@ scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_4ibfh")
 autoplay = "default"
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="AnimatedSprite2D"]
-scale = Vector2(0.333333, 0.333333)
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AnimatedSprite2D/CharacterBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AnimatedSprite2D/Area2D"]
+scale = Vector2(0.333333, 0.333333)
 polygon = PackedVector2Array(-23, -13, -15, -26, -9, -38, -3, -44, 30, -45, 36, -34, 44, -24, 44, -6, 42, 17, 36, 21, 34, 34, 30, 42, 25, 47, 15, 49, 6, 46, 0, 48, -15, 48, -15, 31, -32, 32, -48, 27, -48, 9, -43, 9, -37, 10, -30, 11, -26, 9, -24, 3, -23, -6)

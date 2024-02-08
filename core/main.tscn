@@ -49,4 +49,4 @@ texture = ExtResource("2_lfqno")
 position = Vector2(180, 520)
 
 [node name="Cactus" parent="." instance=ExtResource("4_su3rd")]
-position = Vector2(1250, 520)
+position = Vector2(1350, 520)

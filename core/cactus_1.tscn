@@ -12,9 +12,9 @@ script = ExtResource("1_3w6og")
 scale = Vector2(3, 3)
 texture = ExtResource("1_qv2a1")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Sprite2D"]
+[node name="Area2D" type="Area2D" parent="Sprite2D"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/CharacterBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/Area2D"]
 polygon = PackedVector2Array(-7, -5.66667, -8, -1, -3.33333, 5.66667, 0, 9.66667, 5, 10, 6, 7.33333, 5.66667, -7, -0.666667, -8, -6.66667, -6)
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
@@ -22,9 +22,9 @@ position = Vector2(42, 0)
 scale = Vector2(3, 3)
 texture = ExtResource("2_xmut6")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Sprite2D2"]
+[node name="Area2D" type="Area2D" parent="Sprite2D2"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D2/CharacterBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D2/Area2D"]
 polygon = PackedVector2Array(-2, -9.66667, 1.66667, -9.66667, 7.66667, -7, 10.6667, -6.33333, 10.6667, -0.666667, 8, 5, 3, 10, -2, 10, -6.33333, 8.33333, -7.33333, 5.33333, -4.33333, 0.333333, -3.33333, -5.66667)
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
@@ -32,7 +32,7 @@ position = Vector2(-53, -4)
 scale = Vector2(3, 3)
 texture = ExtResource("3_f8era")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="Sprite2D3"]
+[node name="Area2D" type="Area2D" parent="Sprite2D3"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D3/CharacterBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D3/Area2D"]
 polygon = PackedVector2Array(-9.66667, 3, -9.66667, -5.33333, -6, -6, -4.33333, -8.33333, 0, -9.33333, 2.33333, -9.33333, 3.66667, -6, 7.66667, -1, 8.66667, 4, 8, 7.33333, 4.66667, 10.3333, 3, 11.3333, -1.66667, 11.3333, -5, 7.33333, -7.66667, 5.33333)
